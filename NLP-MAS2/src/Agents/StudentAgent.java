@@ -114,7 +114,7 @@ public class StudentAgent extends Agent {
                             }
                             forwardSentence(sentence);
                         }
-                        else if (content.startsWith("Reward detected") ) {
+                        else if (content.startsWith("Reward detected") && chances<3 ) {
                             // Handle the mistake and update chances
                             chances++;
                             System.out.println(getLocalName() + " used an Entity." + getLocalName() +
@@ -354,9 +354,9 @@ public class StudentAgent extends Agent {
         String firstToken = validTokensFirst.get( random.nextInt(validTokensFirst.size()));
         //System.out.println("write me down the first token:"+ firstToken);
         // Use POS tagging to build a grammatically correct sentence
-        String[] sentenceTokens = new String[5];
+        String[] sentenceTokens = new String[4];
         sentenceTokens[0] = firstToken;
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 4; i++) {
             // Example of simple POS-based generation:
             String[] selectedTokenTags = posTagger2.tag(new String[]{sentenceTokens[i - 1]});
             String requiredTag = getNextTag(selectedTokenTags[0],sentenceTokens[i-1]);

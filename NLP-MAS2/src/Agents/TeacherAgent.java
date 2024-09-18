@@ -143,7 +143,7 @@ public class TeacherAgent extends Agent {
             boolean localReward=false;
             //Named Entity Recognition:
             String [] sentence = new String[]{
-                    "Milan"
+                    "Diana"
             };
             Span[] resultsPerson= nerPerson.findPerson(tokens);
             Span[] resultsLocation= nerLocation.findLocation(tokens);
