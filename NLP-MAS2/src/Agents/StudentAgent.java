@@ -357,7 +357,7 @@ public class StudentAgent extends Agent {
         String[] sentenceTokens = new String[4];
         sentenceTokens[0] = firstToken;
         for (int i = 1; i < 4; i++) {
-            // Example of simple POS-based generation:
+            // POS-based generation:
             String[] selectedTokenTags = posTagger2.tag(new String[]{sentenceTokens[i - 1]});
             String requiredTag = getNextTag(selectedTokenTags[0],sentenceTokens[i-1]);
 
@@ -375,8 +375,13 @@ public class StudentAgent extends Agent {
         return sentenceTokens;
     }
 
-    // Some rules to get the next POS tag based on the current one.
-    // Unfortunately due to limitations,They are not complex
+    // Some rules to get the next POS tag based on the current word tag.
+    // Unfortunately due to limitations of the POS model used by OpenNLP,They are not complex
+    // For developing more intricate sentences, in the next version which deals with students of higher levels,
+    // we can extract the tags provided by corpus itself and this way we can create more potent sentences with more
+    // detaild POSs. This way we need not just extracting the sentences, at the same time we have to extract their POS. However,
+    // for the purpose of using more NLP tools, I used postagger library and I could not find a more detaild pretraind model
+    // of pos tagger so far
     private String getNextTag(String currentTag,String token) {
        // logger.info("Determining the next tag for current tag: " + currentTag);
 
@@ -407,6 +412,7 @@ public class StudentAgent extends Agent {
             }
         };
     }
+    // I intended to use more complex Part of speeches but due to the model limitation this function is unsed now.
     private boolean isSingularNoun(String noun) {
         // Basic check: if it ends with "s", it's likely plural
         return !noun.toLowerCase().endsWith("s");
