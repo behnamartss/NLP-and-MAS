@@ -131,11 +131,11 @@ public class TeacherAgent extends Agent {
         }
         private boolean evaluateResponse(String response) {
 
-            // Example logic: A "Mistake" is detected if response contains a specific keyword.
+            // Logic: A "Mistake" is detected if response contains a repetitive
             Boolean mistake=Stream.of(response.split(" ")).anyMatch(usedTokens::contains);
             System.out.println("Is there any repetitive token used before? "+ mistake);
 
-            return mistake; // Example evaluation logic
+            return mistake; //
         }
 
         private boolean rewardResponse(String response) {
