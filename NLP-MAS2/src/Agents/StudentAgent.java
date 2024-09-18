@@ -412,7 +412,7 @@ public class StudentAgent extends Agent {
             }
         };
     }
-    // I intended to use more complex Part of speeches but due to the model limitation this function is unsed now.
+    // I intended to use more complex Part of speeches but due to the model limitation this function remained unused now.
     private boolean isSingularNoun(String noun) {
         // Basic check: if it ends with "s", it's likely plural
         return !noun.toLowerCase().endsWith("s");
